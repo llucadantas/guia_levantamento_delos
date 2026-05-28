@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Fotos por Tipo de Ativo</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        delos: {
+                            DEFAULT: '#9C2B2C', // Vermelho vinho da logo
+                            dark: '#7A2223',    // Tom um pouco mais escuro para os textos
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        /* LÓGICA DO ACCORDION */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s ease-in-out;
+        }
+
+        .accordion-content.open {
+            grid-template-rows: 1fr;
+        }
+
+        .accordion-inner {
+            overflow: hidden;
+            transition: opacity 0.35s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .accordion-content.open .accordion-inner {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* TRAVA DE SEGURANÇA PARA IMAGENS */
+        .accordion-inner img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Estilo para imagem vazia */
+        .accordion-inner img:not([src]),
+        .accordion-inner img[src=""] {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-style: dashed;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+
+    <main class="w-full max-w-3xl">
+
+        <header class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8 mb-8 text-center">
+            <div class="flex justify-center mb-6">
+                <img src="img/delosconsultoria_logo.jpg" alt="Logo Delos Consultoria"
+                    class="h-12 sm:h-16 w-auto object-contain rounded-full shadow-sm">
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Guia de Levantamento por Tipo de Ativo</h1>
+            <p class="text-gray-500 text-sm sm:text-base">
+                Este documento apresenta um guia prático relacionado ao Levantamento de cada ativo em campo.
+            </p>
+        </header>
+
+        <div class="space-y-4" id="accordion-container">
+
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">1</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Vinculação</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+                        </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">2</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Postes</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar o
+                                poste completo em sentido vertical, contemplando desde o solo até o topo da estrutura.
+                            </p>
+                            <img src="img/poste_visaogeral.jpg" alt="Visão Geral do Poste">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Altura e Esforço</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Focar
+                                diretamente na marcação técnica gravada no corpo do poste. Garantir a leitura nítida das
+                                informações de altura (metros) e esforço nominal (daN).</p>
+                            <img src="img/altura.jpg" alt="Altura e Esforço">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">3</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Transformadores</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar o
+                                transformador centralizado em sua estrutura de montagem no poste, incluindo os
+                                para-raios de linha e os conjuntos de chaves superiores.</p>
+                            <img src="img/visaogeraltrafo.jpg" alt="Visão Geral do Transformador">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Lateral Direita do Trafo</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar a
+                                lateral direita do transformador. Evidenciar qualquer informação desta parte do corpo do
+                                trafo.</p>
+                            <img src="img/lateraldireita.jpg" alt="Lateral Direita do Trafo">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 3: Lateral Esquerda do Trafo</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar a
+                                lateral esquerda do transformador. Evidenciar qualquer informação escrita no corpo do
+                                trafo.</p>
+                            <img src="img/lateralesquerda.jpeg" alt="Lateral Esquerda do Trafo">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 4: Placa de Características Técnicas</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Capturar uma
+                                imagem aproximada da placa de identificação metálica do fabricante. Dados como potência
+                                (kVA), número de série e tensões nominais devem estar totalmente legíveis.</p>
+                            <img src="img/placatrafo.jpg" alt="Placa de Características">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">4</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Chaves Faca</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar o
+                                poste completo em sentido vertical, contemplando obrigatoriamente desde o solo até o
+                                topo da estrutura.</p>
+                            <img src="img/visaogeral_chave.jpg" alt="Estrutura Chaves Faca">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Foco no equipamento</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Efetuar uma
+                                aproximação visual focando diretamente no conjunto das chaves.</p>
+                            <img src="img/foco_chave.jpg" alt="Conjunto de Chaves em Foco">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 3: Placa de Identificação da Chave</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Focar
+                                individualmente na placa presente no corpo ou na base metálica de suporte de cada chave
+                                instalada na estrutura (atentando-se ao fato de que pode haver mais unidades por ponto).
+                            </p>
+                            <img src="img/placa_chave.jpg" alt="Placa da Chave">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">5</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Consumidores</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral do Imóvel</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Capturar a
+                                frente do imóvel de forma centralizada.</p>
+                            <img src="img/imovel.jpg" alt="Fachada do Imóvel">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Medidor</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Capturar a foto
+                                de frente do medidor com o máximo de foco possível. Garantir que o número de série do
+                                medidor e demais informações estejam totalmente legíveis para validação no sistema.</p>
+                            <img src="img/info_consumidor.jpg" alt="Medidor de Energia">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 3: Caixa de Medição</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar a
+                                caixa de medição completa, mostrando o estado geral da estrutura.</p>
+                            <img src="img/caixa_consumidor.jpg" alt="Caixa de Medição">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">6</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Religador</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar o
+                                conjunto completo do religador e seu respectivo armário de controle montado na base do
+                                poste.</p>
+                            <img src="img/visaogeral_religador.jpg" alt="Religador e Armário">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Foco no Religador</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar o
+                                corpo do religador em plano fechado.</p>
+                            <img src="img/foco_religador.jpg" alt="Corpo do Religador">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 3: Placa de Identificação do Religador</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Focar
+                                individualmente na placa presente no corpo do religador.</p>
+                            <img src="img/placa_religador.jpg" alt="Placa do Religador">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                    class="accordion-header w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 rounded bg-delos text-white font-bold text-sm">7</span>
+                        <h2 class="font-semibold text-lg text-gray-800">Banco Capacitor</h2>
+                    </div>
+                    <i data-lucide="chevron-down" class="chevron w-5 h-5 text-gray-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner p-5 pt-0 border-t border-gray-100 space-y-6">
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 1: Visão Geral</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar a
+                                estrutura completa em sentido vertical, contemplando obrigatoriamente desde o solo até o
+                                topo da estrutura.</p>
+                            <img src="img/visaogeral_capacitor.jpg" alt="Banco Capacitor">
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-bold text-delos-dark mb-2">Foto 2: Placa Identificadora</h3>
+                            <p class="text-sm text-gray-600"><span class="font-semibold">Legenda:</span> Registrar cada
+                                placa presente nos capacitores (atentando-se ao fato de que pode haver mais unidades por
+                                ponto).</p>
+                            <img src="img/placa_capacitor.jpg" alt="Placa do Capacitor">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll('.accordion-header');
+
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const chevron = header.querySelector('.chevron');
+
+                    const isOpen = content.classList.contains('open');
+
+                    // Fecha todos
+                    document.querySelectorAll('.accordion-content').forEach(item => {
+                        item.classList.remove('open');
+                    });
+
+                    document.querySelectorAll('.chevron').forEach(icon => {
+                        icon.classList.remove('rotate');
+                    });
+
+                    // Se não estava aberto, abre este
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        chevron.classList.add('rotate');
+                    }
+                });
+            });
+
+            // Abre a primeira categoria por padrão
+            if (headers.length > 0) {
+                headers[0].click();
+            }
+        });
+    </script>
+</body>
+
+</html>
